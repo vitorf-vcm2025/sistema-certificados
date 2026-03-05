@@ -28,3 +28,12 @@ def detalhe_certificado(request, certificado_id):
     }
 
     return render(request, 'certificados/detalhe.html', contexto)
+
+
+def lista_certificados(request):
+    """
+    Busca todos os certificados no banco de dados e exibe em uma lista.
+    """
+    todos_certificados = Certificado.objects.all().order_by('-data_emissao')
+
+    return render(request, 'certificados/lista.html', {'certificados': todos_certificados})
