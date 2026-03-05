@@ -127,7 +127,33 @@
       </div>
     </div>
 
-    <div style="position: fixed; bottom: 20px; right: 20px" class="no-print">
+    <div
+      style="
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      "
+      class="no-print"
+    >
+      <a
+        href="{% url 'lista_certificados' %}"
+        style="
+          padding: 15px 25px;
+          background: #7f8c8d;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-weight: bold;
+          text-align: center;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        "
+      >
+        ⬅️ Voltar para a Lista
+      </a>
+
       <button
         onclick="window.print()"
         style="
@@ -136,8 +162,8 @@
           color: white;
           border: none;
           border-radius: 5px;
-          cursor: pointer;
           font-weight: bold;
+          cursor: pointer;
           box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         "
       >
