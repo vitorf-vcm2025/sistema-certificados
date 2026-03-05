@@ -32,8 +32,17 @@ def detalhe_certificado(request, certificado_id):
 
 def lista_certificados(request):
     """
-    Busca todos os certificados no banco de dados e exibe em uma lista.
+    Lista os certificados e permite filtrar por nome do aluno.
     """
-    todos_certificados = Certificado.objects.all().order_by('-data_emissao')
+    # 1. Pega o termo que o usuário digitou na busca
+    termo_busca = request.GET.get('busca')
 
-    return render(request, 'certificados/lista.html', {'certificados': todos_certificados})
+    # 2. Começa com todos os certificados
+    certificados = Certificado.objects.all().order_by('-data_emissao')
+
+    # 3. Se houver algo na busca, filtra os resultados
+    if termo_busca:
+        certificados = certificados.filter(
+            aluno__nome_completo__icontains=termo_busca)
+
+    return render(request, 'certificados/lista.html', {'certificados': certificados})

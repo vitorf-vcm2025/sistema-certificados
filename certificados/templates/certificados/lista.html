@@ -73,6 +73,32 @@
         Olá, <strong>Vitor Luís Fernandes</strong>. Este é o controle de
         emissões da sua formação na <strong>UniCesumar</strong>.
       </p>
+      <form method="GET" style="margin-bottom: 20px; display: flex; gap: 10px">
+        <input
+          type="text"
+          name="busca"
+          placeholder="Pesquisar por nome do aluno..."
+          value="{{ request.GET.busca }}"
+          style="
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+          "
+        />
+        <button
+          type="submit"
+          class="btn-view"
+          style="border: none; cursor: pointer"
+        >
+          🔍 Pesquisar
+        </button>
+        <a
+          href="{% url 'lista_certificados' %}"
+          style="text-decoration: none; color: #7f8c8d; padding-top: 10px"
+          >Limpar</a
+        >
+      </form>
 
       <table>
         <thead>
