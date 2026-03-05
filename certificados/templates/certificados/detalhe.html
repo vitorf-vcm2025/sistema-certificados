@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Validação de Certificado - {{ certificado.aluno.nome_completo }}
+    </title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        display: flex;
+        justify-content: center;
+        padding: 50px;
+      }
+      .certificate-container {
+        background-color: white;
+        padding: 50px;
+        border: 15px double #2c3e50;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+        max-width: 850px;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .watermark {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-45deg);
+        opacity: 0.15;
+        font-size: 80px;
+        color: #2c3e50;
+        z-index: 0;
+        pointer-events: none;
+        font-weight: bold;
+      }
+      h1 {
+        color: #2c3e50;
+        text-transform: uppercase;
+        font-size: 40px;
+        margin-bottom: 10px;
+        position: relative;
+        z-index: 1;
+      }
+      .content {
+        font-size: 20px;
+        line-height: 1.6;
+        color: #333;
+        position: relative;
+        z-index: 1;
+      }
+      .highlight {
+        font-weight: bold;
+        color: #2980b9;
+      }
+      .footer {
+        margin-top: 40px;
+        border-top: 1px solid #ccc;
+        padding-top: 20px;
+        font-size: 14px;
+        color: #7f8c8d;
+        position: relative;
+        z-index: 1;
+      }
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+        .no-print {
+          display: none;
+        }
+        .certificate-container {
+          border: 5px solid #2c3e50;
+          box-shadow: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="certificate-container" id="printableArea">
+      <div class="watermark">CERTIFICADO</div>
+
+      <div
+        style="
+          margin-bottom: 30px;
+          border-bottom: 2px solid #2980b9;
+          padding-bottom: 10px;
+        "
+      >
+        <h2 style="color: #2980b9; margin: 0; letter-spacing: 2px">
+          SISTEMA VITOR FERNANDES
+        </h2>
+        <small style="color: #7f8c8d; text-transform: uppercase"
+          >Engenharia de Software - UniCesumar</small
+        >
+      </div>
+
+      <h1>Certificado de Conclusão</h1>
+
+      <div class="content">
+        <p>Certificamos para os devidos fins que</p>
+        <p class="highlight">{{ certificado.aluno.nome_completo }}</p>
+        <p>concluiu com êxito o treinamento de</p>
+        <p class="highlight">{{ certificado.curso.nome }}</p>
+        <p>com carga horária de {{ certificado.curso.carga_horaria }} horas.</p>
+      </div>
+
+      <div class="footer">
+        <p>Emitido em: {{ certificado.data_emissao|date:"d/m/Y" }}</p>
+        <p>
+          Chave de Autenticidade:
+          <strong>{{ certificado.chave_validacao }}</strong>
+        </p>
+        <p>ID de Segurança: {{ certificado.id }}</p>
+
+        <div style="margin-top: 20px">
+          <p>Aponte a câmera para validar:</p>
+          <img
+            src="data:image/png;base64,{{ qr_code }}"
+            alt="QR Code"
+            style="width: 150px"
+          />
+        </div>
+      </div>
+    </div>
+
+    <div style="position: fixed; bottom: 20px; right: 20px" class="no-print">
+      <button
+        onclick="window.print()"
+        style="
+          padding: 15px 25px;
+          background: #2980b9;
+          color: white;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          font-weight: bold;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        "
+      >
+        🖨️ Gerar PDF / Imprimir
+      </button>
+    </div>
+  </body>
+</html>
