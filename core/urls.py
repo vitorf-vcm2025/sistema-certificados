@@ -10,6 +10,7 @@ urlpatterns = [
     path('lista/', lista_certificados, name='lista_certificados'),
 
     # Este é o link de validação que usa o UUID por segurança
-    path('validar/<uuid:certificado_id>/',
+    # Ajustamos o nome para bater exatamente com o novo campo de segurança
+    path('validar/<uuid:id_seguranca>/',
          detalhe_certificado, name='detalhe_certificado'),
 ]

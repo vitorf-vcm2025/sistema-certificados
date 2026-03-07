@@ -5,11 +5,11 @@ import io
 import base64
 
 
-def detalhe_certificado(request, certificado_id):
-    certificado = get_object_or_404(Certificado, id=certificado_id)
+def detalhe_certificado(request, id_seguranca):
+    certificado = get_object_or_404(Certificado, id=id_seguranca)
 
     meu_ip = "192.168.0.196"
-    link_validacao = f"http://{meu_ip}:8000/validar/{certificado_id}/"
+    link_validacao = f"http://{meu_ip}:8000/validar/{id_seguranca}/"
 
     # Cria o QR Code
     qr = qrcode.QRCode(version=1, box_size=10, border=5)

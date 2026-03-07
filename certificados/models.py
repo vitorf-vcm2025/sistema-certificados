@@ -3,7 +3,8 @@ from django.db import models
 
 
 class Aluno(models.Model):
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    id_seguranca = models.UUIDField(
+        primary_key=True, default=uuid.uuid4, editable=False)
     nome_completo = models.CharField(max_length=255)
     cpf = models.CharField(max_length=14, unique=True)
     email = models.EmailField(unique=True)
