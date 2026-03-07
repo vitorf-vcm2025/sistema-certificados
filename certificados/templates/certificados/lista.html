@@ -65,6 +65,22 @@
         text-align: center;
       }
     </style>
+    <div style="text-align: right; margin-bottom: 20px">
+      <span>Olá, <strong>{{ user.username }}</strong>!</span>
+      <a
+        href="{% url 'logout' %}"
+        style="
+          background-color: #d9534f;
+          color: white;
+          padding: 10px;
+          text-decoration: none;
+          border-radius: 5px;
+          margin-left: 10px;
+        "
+      >
+        Sair do Sistema
+      </a>
+    </div>
   </head>
   <body>
     <div class="painel">

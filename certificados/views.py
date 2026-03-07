@@ -3,6 +3,7 @@ from .models import Certificado
 import qrcode
 import io
 import base64
+from django.contrib.auth.decorators import login_required
 
 
 def detalhe_certificado(request, id_seguranca):
@@ -30,6 +31,7 @@ def detalhe_certificado(request, id_seguranca):
     return render(request, 'certificados/detalhe.html', contexto)
 
 
+@login_required
 def lista_certificados(request):
     """
     Lista os certificados e permite filtrar por nome do aluno.

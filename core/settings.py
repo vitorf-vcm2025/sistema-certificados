@@ -116,3 +116,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+# Direciona quem não está logado para a tela de login do administrador
+LOGIN_URL = '/admin/login/'

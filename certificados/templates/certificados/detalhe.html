@@ -1,6 +1,30 @@
 <!doctype html>
 <html lang="pt-br">
   <head>
+    <style>
+      /* Estilo para a tela normal */
+      .btn-imprimir {
+        background-color: #0275d8;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-bottom: 20px;
+      }
+
+      /* A MÁGICA: O que acontece na hora de imprimir */
+      @media print {
+        .btn-imprimir,
+        .no-print {
+          display: none !important; /* Esconde o botão na folha de papel */
+        }
+        body {
+          margin: 0;
+          padding: 0;
+        }
+      }
+    </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>
@@ -97,6 +121,9 @@
           >Engenharia de Software - UniCesumar</small
         >
       </div>
+      <button onclick="window.print()" class="btn-imprimir">
+        🖨️ Imprimir Certificado Profissional
+      </button>
 
       <h1>Certificado de Conclusão</h1>
 
